@@ -20,6 +20,7 @@ public class SecretsConfigurationProvider : ConfigurationProvider
 
             Data.Add(Secrets.LoggerMongoConnectionStringKey, secrets.Logger.MongoConnectionString);
             Data.Add(Secrets.VideoHubMongoConnectionStringKey, secrets.VideoHub.MongoConnectionString);
+            Data.Add(Secrets.MessageQueueManagerUriKey, secrets.MessageQueueManager.Uri);
         }
     }
 }

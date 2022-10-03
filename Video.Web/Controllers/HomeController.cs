@@ -1,5 +1,4 @@
-﻿using Common.UpLogger;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using VideoHub.Web.Models;
 
@@ -9,23 +8,19 @@ namespace Video.Web
     {
         private readonly VideoHubWebSettings _settings;
         private readonly HttpClient _client;
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(IOptions<VideoHubWebSettings> settings, ILogger<HomeController> logger)
+        public HomeController(IOptions<VideoHubWebSettings> settings)
         {
             _settings = settings.Value;
             _client = new HttpClient();
-            _logger = logger;
         }
 
         [HttpGet]
         [Route("/")]
         public async Task<IActionResult> Index() 
         {
-            throw new ArgumentException("test new mongo user");
-
-            await Task.Delay(100);
-            return Ok("hello");
+            return View();
+            //return Problem()
         }
 
         [HttpGet]

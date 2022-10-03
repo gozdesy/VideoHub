@@ -17,6 +17,7 @@
     <ProjectReference Include="..\VideoHub.API.Services\VideoHub.API.Services.csproj" />
     <ProjectReference Include="..\VideoHub.Nosql.Data\VideoHub.Nosql.Data.csproj" />
     <ProjectReference Include="..\VideoHub.Nosql.Model\VideoHub.Nosql.Model.csproj" />
+    <ProjectReference Include="..\VideoHub.Transcode\VideoHub.Transcode.csproj" />
   </ItemGroup>
 
 </Project>

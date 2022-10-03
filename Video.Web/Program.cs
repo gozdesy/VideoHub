@@ -5,16 +5,21 @@ using Common.Secrets;
 using Common.Secrets.SecretsGateway;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddExceptionHandler(options => { });
+builder.Services.Configure<VideoHubWebSettings>(builder.Configuration.GetSection("VideoHubWebSettings"));
 
+// SECRETS
+// -----------------------------------------------------------------------------------------------------------------------------------------
 builder.Configuration.AddSecretsConfiguration(builder.Configuration.GetSection("SecretsGatewaysOptions").Get<SecretsGatewaysOptions>());
 
+// LOGGER
+// -----------------------------------------------------------------------------------------------------------------------------------------
 builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 builder.Logging.AddUpLogger(options => {
     builder.Configuration.GetSection(nameof(UpLogger)).Bind(options);
     options.ConnectionString = builder.Configuration[Secrets.LoggerMongoConnectionStringKey];
 });
-
-builder.Services.Configure<VideoHubWebSettings>(builder.Configuration.GetSection("VideoHubWebSettings"));
 
 // Add services to the container.
 var mvc = builder.Services.AddControllersWithViews();

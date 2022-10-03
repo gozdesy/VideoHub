@@ -5,5 +5,7 @@
         public Logger Logger { get; set; }
 
         public VideoHub VideoHub { get; set; }
+
+        public MessageQueueManager MessageQueueManager { get; set; }
     }
 }
